@@ -6,7 +6,7 @@ Library for doctest like functionality for Clojure programming language
 
 ### Installation
 
-Add `[thereisnodot/akronim 0.1.0]` to the `project.clj`
+Add [![Clojars Project](https://clojars.org/thereisnodot/akronim/latest-version.svg)](https://clojars.org/thereisnodot/akronim) to the `project.clj`
 
 ### Usage
 
