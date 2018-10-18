@@ -6,7 +6,7 @@ Library for doctest like functionality for Clojure programming language
 
 ### Installation
 
-Add [![Clojars Project](https://clojars.org/thereisnodot/akronim/latest-version.svg)](https://clojars.org/thereisnodot/akronim) to the `project.clj`
+[![Clojars Project](https://clojars.org/thereisnodot/akronim/latest-version.svg)](https://clojars.org/thereisnodot/akronim) 
 
 ### Usage
 
