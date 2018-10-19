@@ -102,10 +102,10 @@ Default is **nothing**
 (:doc (meta #'simple-sum)) => 
 "Will execute function over value of the map
 
-`` ``` ``clojure
+```clojure
 (simple-sum 3 4) => 7
 (simple-sum 4 5) => 9
-`` ``` ``"
+```"
 
 ;; with hljs set
 (:doc (meta #'simple-sum)) => 
