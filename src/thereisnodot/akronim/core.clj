@@ -4,7 +4,6 @@
 ;; @ You must not remove this notice, or any other, from this software.                 @
 ;; @ All rights reserved.                                                               @
 ;; @@@@@@ At 2018-10-18 19:47 <thereisnodotcollective@gmail.com> @@@@@@@@@@@@@@@@@@@@@@@@
-(println "Hello")
 (ns
     ^{:doc "Inline asserts and helpers"
       :author "Michael Leahcim"}
