@@ -5,8 +5,8 @@
 ;; @ All rights reserved.                                                               @
 ;; @@@@@@ At 2018-17-10 23:32 <mklimoff222@gmail.com> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-(ns {:doc "Testing for akronim package"
-     :author "Michael Leahcim"}
+(ns ^{:doc "Testing for akronim package"
+      :author "Michael Leahcim"}
   thereisnodot.akronim.core-test
   (:require [clojure.test :refer :all]
             [thereisnodot.akronim.test-helpers :as test-helpers]
@@ -63,7 +63,7 @@
 (deftest test-defns
   (testing "Has example key"
     (is
-     (=  (:example (meta #'test-helpers/test-defns-simple-sum))
+     (=  (:akronim/example (meta #'test-helpers/test-defns-simple-sum))
          (list ["(test-defns-simple-sum 2 3)" "=>" "5"]
                ["(test-defns-simple-sum 3 3)" "=>" "6"]
                ["(test-defns-simple-sum 0 0)" "=>" "0"]))))

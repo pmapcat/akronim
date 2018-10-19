@@ -4,40 +4,21 @@
 ;; @ You must not remove this notice, or any other, from this software.                 @
 ;; @ All rights reserved.                                                               @
 ;; @@@@@@ At 2018-10-18 19:47 <thereisnodotcollective@gmail.com> @@@@@@@@@@@@@@@@@@@@@@@@
+(println "Hello")
 (ns
     ^{:doc "Inline asserts and helpers"
       :author "Michael Leahcim"}
-    thereisnodot.akronim.core)
+    thereisnodot.akronim.core
+  (:require [thereisnodot.akronim.templates :as tmpl]
+            [environ.core :as environ]))
 
-(def docstring-append (atom (fn [docstring examples]
-                              docstring)))
-(def example-key (atom :example))
-
-(defn docstring-template-nothing
-  [docstring examples]
-  docstring)
-
-(defn docstring-template-markdown-examples
-  [docstring examples]
-  (str docstring "\n\n"
-       "```clojure"
-       (apply
-        str
-        (for [[should _ result] examples]
-          (str  should " => " result "\n")))
-       "```"))
-
-(defn docstring-template-hljs-examples
-  [docstring examples]
-  (str docstring "</br>"
-       "<pre>"
-       "<code class='hljs clojure'>"
-       (apply
-        str
-        (for [[should _ result] examples]
-          (str  should " => " result "\n")))
-       "</code>"
-       "</pre>"))
+(def docstring-append
+  (condp = (environ/env :akronim-docstring)
+    "nothing"  tmpl/docstring-template-nothing
+    "text"     tmpl/docstring-template-text
+    "markdown" tmpl/docstring-template-markdown
+    "hljs"     tmpl/docstring-template-hljs
+    tmpl/docstring-template-nothing))
 
 (defmacro make-test-form
   "Will turn user friendly description into an assert/test form"
@@ -62,9 +43,9 @@
   [fname docstring examples & decls]
   (list* `defn (with-meta fname
                  (assoc (meta fname)
-                        @example-key `(make-example-form ~@examples)
-                        :test    `(make-test-form ~@examples)))
-         (@docstring-append docstring `(make-example-form ~@examples))
+                        :akronim/example `(make-example-form ~@examples)
+                        :test            `(make-test-form ~@examples)
+                        :doc             (docstring-append docstring examples)))
          decls))
 
 (defmacro defns-

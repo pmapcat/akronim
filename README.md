@@ -51,7 +51,6 @@ AssertionError Assert failed: (clojure.core/= (test-defns-simple-sum-will-fail 3
 #### Using with core.test
 
 Here is how to use it in conjunction with testing pipeline. 
-For example:
 
 ```clojure
 
@@ -66,66 +65,25 @@ For example:
         (is (=  (test access) :ok))))))
 ```
 
-#### Using with external documentation tools and customization
+#### Altering docstring
 
-Altering docstring with examples. 
+To alter docstring of a function at the time of declaration 
+set the following config option either as: `.lein-env` or `.boot-env` or environment
+variables or Java system properties
 
-There are several built in functions:
-* `docstring-template-nothing` will not alter docstring
-* `docstring-template-markdown-examples` will implement markdown like examples
-* `docstring-template-hljs-examples`  will implement html `hightlight.js` like docs
+Set `akronim_docstring` parameter as:
+* **nothing** will not alter docstring on declaration
+* **text**    will append examples at the end of the docstring
+* **markdown** will wrap the declaration into markdown Clojure code block and append examples  at the end of the docstring
+* **hljs** will wrap the declaration into HTML code for https://highlightjs.org and append examples at the end of the docstring
 
-They can be used like this
-```clojure
-(require '[thereisnodot.akronim.core :as akronim :refer [defns]))
-
-
-(reset! akronim/docstring-append akronim/docstring-template-nothing) ;;default
-;; This will append examples to the end of the docstring in markdown format
-(reset! akronim/docstring-append akronim/docstring-template-markdown-examples) 
-;; this will make it in a hljs like format
-(reset! akronim/docstring-append akronim/docstring-template-hljs-examples) 
-```
-
-##### Writing your own docstring-append
-
-Here is an example implementation: 
-
-```clojure
-(require '[thereisnodot.akronim.core :as akronim :refer [defns]))
-
-;; This will append examples to the end of the docstring in 
-;; markdown format
-(reset! akronim/docstring-append 
-  (fn [docstring examples]
-    (str docstring "\n"
-       "```clojure"
-       (apply
-        str
-        (for [[should _ result] examples]
-          (str  should " => " result "\n")))
-       "```")))
-```
-
-#### Replacing :example to :whatever 
-
-When the meta key should be replace for something else, 
-it is possible to do through the following action
-
-```clojure
-(require '[thereisnodot.akronim.core :as akronim :refer [defns]))
-
-(reset! akronim/example-key :example) ;; default
-(reset! akronim/example-key :whatever-custom) ;; change
-```
+Default is **nothing**
 
 #### Gotchas
 
 * Right now, `akronim` requires docstring to be present in the generated function. 
-* There are tools that assume your function declaration form to be `defn` not
-  `defns`. 
-  
-  
+* There are tools that assume function declaration form to be `defn` not `defns`. 
+
 ### Development
 
 This will clone the repo and start a local repl and run tests
@@ -134,5 +92,4 @@ This will clone the repo and start a local repl and run tests
 git clone github.com/MichaelLeachim/akronim;
 cd akronim;
 tmuxinator . ;
-echo "Happy hacking";
 ```
