@@ -79,6 +79,46 @@ Set `akronim_docstring` parameter as:
 
 Default is **nothing**
 
+```clojure
+
+(defns simple-sum
+  "Will execute function over value of the map"
+  [(simple-sum 3 4) => 7
+   (simple-sum 4 5) => 9]
+  [a b]
+  (+ a b))
+  
+;; with nothing set
+(:doc (meta #'simple-sum)) => "Will execute function over value of the map"
+
+;; with text set
+(:doc (meta #'simple-sum)) => 
+"Will execute function over value of the map
+
+(simple-sum 3 4) => 7
+(simple-sum 4 5) => 9"
+
+;; with markdown set
+(:doc (meta #'simple-sum)) => 
+"Will execute function over value of the map
+
+`` ``` ``clojure
+(simple-sum 3 4) => 7
+(simple-sum 4 5) => 9
+`` ``` ``"
+
+;; with hljs set
+(:doc (meta #'simple-sum)) => 
+"Will execute function over value of the map</br>
+<pre>
+  <code class='cljs clojure'>
+    (simple-sum 3 4) => 7
+    (simple-sum 4 5) => 9
+  </code>
+</pre>
+```
+
+
 #### Gotchas
 
 * Right now, `akronim` requires docstring to be present in the generated function. 
