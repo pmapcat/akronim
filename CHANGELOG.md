@@ -22,4 +22,4 @@
 ### Removed 
 - User defined :example and docstring generation funtionality
 
-[0.1.1]: https://github.com/michaelleachim/akronim/compare/0.1.0...HEAD
+[0.1.0]: https://github.com/michaelleachim/akronim/compare/0.1.0...HEAD
