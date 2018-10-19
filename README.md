@@ -42,7 +42,7 @@ AssertionError Assert failed: (clojure.core/= (test-defns-simple-sum-will-fail 3
 
 ;; Examples. Providing examples in this form is useful for external documentation tools
 
-(:example (meta #'simple-sum)) => 
+(:akronim/example (meta #'simple-sum)) => 
   ["(simple-sum 3 4)" "=>" "7"] 
   ["(simple-sum 4 5)" "=>" "9"]
 ```
