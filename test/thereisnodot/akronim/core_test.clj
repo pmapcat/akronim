@@ -24,6 +24,18 @@
         (list
          ["(mult 3 2)" "=>" "6"]
          ["(mult 5 8)" "=>" "40"]))))
+    (testing "Formatting should work"
+      (is
+       (=
+        (make-example-form
+         {:hello {:my {:dear {:friend "whatever" :this "thing" :doesnt "work" "as" "expected"}}}} =>
+         {:whatever [:whenever :what :else :should :work]})
+        (list
+       ["{:hello {:my {:dear {:doesnt \"work\",
+                     :friend \"whatever\",
+                     :this \"thing\",
+                     \"as\" \"expected\"}}}}" "=>"
+        "{:whatever [:whenever :what :else :should :work]}"]))))
     (testing "Should work on fns from other ns"
       (is
        (=

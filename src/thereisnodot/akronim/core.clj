@@ -9,7 +9,8 @@
       :author "Michael Leahcim"}
     thereisnodot.akronim.core
   (:require [thereisnodot.akronim.templates :as tmpl]
-            [environ.core :as environ]))
+            [environ.core :as environ]
+            [zprint.core :as zp]))
 
 (def docstring-append
   (condp = (environ/env :akronim-docstring)
@@ -34,7 +35,7 @@
   (cons
    list
    (for [[k _ v] (partition 3 input)]
-     [(str k) "=>" (str v)])))
+     [(zp/zprint-str k 80) "=>" (zp/zprint-str v 80)])))
 
 (defmacro defns
   "will add examples in the form of :example and :test to the
@@ -42,7 +43,8 @@
   [fname docstring examples & decls]
   (list* `defn (with-meta fname
                  (assoc (meta fname)
-                        :akronim/example `(make-example-form ~@examples)
+                        :akronim/example
+                        `(make-example-form ~@examples)
                         :test            `(make-test-form ~@examples)
                         :doc             (docstring-append docstring examples)))
          decls))
