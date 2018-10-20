@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Added
+- formatting for :akronim/example metadata field
 
 ### Changed
 
