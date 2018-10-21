@@ -32,3 +32,5 @@
 - User defined :example and docstring generation funtionality
 
 [0.1.0]: https://github.com/michaelleachim/akronim/compare/0.1.0...HEAD
+[0.1.2]: https://github.com/michaelleachim/akronim/compare/0.1.0...0.1.2
+[Unreleased]: https://github.com/michaelleachim/akronim/compare/0.1.2..HEAD
