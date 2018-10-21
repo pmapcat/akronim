@@ -2,18 +2,16 @@
 
 Library for doctest like functionality for Clojure programming language
 
-## Usage
-
-### Installation
+## Installation
 
 [![Clojars Project](https://clojars.org/thereisnodot/akronim/latest-version.svg)](https://clojars.org/thereisnodot/akronim) 
 
-### Usage
+## Usage
 
 The akronim package provides `defns` macro 
 to make testing and inplace documentation easier
 
-#### Getting started
+### Getting started
 
 ```clojure
 (require '[thereisnodot.akronim.core :refer [defns]))
@@ -49,7 +47,7 @@ AssertionError Assert failed: (clojure.core/= (test-defns-simple-sum-will-fail 3
 ```
 
 
-#### Using with core.test
+### Using with core.test
 
 Here is how to use it in conjunction with testing pipeline. 
 
@@ -66,7 +64,7 @@ Here is how to use it in conjunction with testing pipeline.
         (is (=  (test access) :ok))))))
 ```
 
-#### Altering docstring
+### Altering docstring
 
 To alter docstring of a function at the time of declaration 
 set the following config option either as: `.lein-env` or `.boot-env` or environment
@@ -119,7 +117,7 @@ Default is **nothing**
 </pre>
 ```
 
-#### :no-test?  metadata declaration
+### :no-test?  metadata declaration
 
 Sometimes we have to demonstrate function usage, but, for some
 reason, we don't want the function to generate `:test` 
@@ -146,8 +144,7 @@ function declaration. For example:
 ;; => (list [(str (temp-file)) => "/tmp/cljtmpfile1555885885588503551"])
 ```
 
-
-### Development
+## Development
 
 This will clone the repo and start a local repl and run tests
 
@@ -156,4 +153,39 @@ git clone github.com/MichaelLeachim/akronim;
 cd akronim;
 tmuxinator . ;
 ```
+
+## Change Log
+
+### [Unreleased]
+
+### [0.1.2]   2018-10-21
+#### Added
+- formatting for :akronim/example metadata field
+
+#### Changed
+- ~~There are tools that assume function declaration form to be `defn` not `defns`~~ 
+  Now the same declaration as per `defn` should work. See tests
+  
+
+### [0.1.0] - 2018-10-20
+#### Added
+- configuration through environ library
+
+#### Added
+- basic functionality
+- readme
+- core tests
+- template tests
+- external configuration
+
+#### Changed 
+- Moved from another project into separate repository
+- Moved templates
+
+#### Removed 
+- User defined :example and docstring generation funtionality
+
+[0.1.2]: https://github.com/michaelleachim/akronim/compare/0.1.0...0.1.2
+[Unreleased]: https://github.com/michaelleachim/akronim/compare/0.1.2..HEAD
+
 
