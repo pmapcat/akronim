@@ -119,17 +119,33 @@ Default is **nothing**
 </pre>
 ```
 
+#### :no-test?  metadata declaration
 
-#### Gotchas
+Sometimes we have to demonstrate function usage, but, for some
+reason, we don't want the function to generate `:test` 
 
-* There are tools that assume function declaration form to be `defn` not `defns`. 
+Usually, it happens when we are dealing with mutability. 
 
-### FAQ
+In this case, pass `:no-test?` as a metadata field to the 
+function declaration. For example:
 
-#### I want to use Cider debug over a function
+```clojure
 
-Take out the internals of the function. Use `defns` as an interface for the outside
-usage. Make private function that does the heavy lifting. 
+(defns temp-file
+  "Will return temp file handler without actually making it"
+  {:no-test? true}
+  [(str (temp-file)) => "/tmp/cljtmpfile1555885885588503551"]
+  ([]
+   (temp-file "cljtmpfile" ""))
+  ([prefix extension]
+   (java.io.File/createTempFile prefix extension)))
+
+(test #'temp-file)
+;; => :no-test
+(:akronim/example (meta #'temp-file))
+;; => (list [(str (temp-file)) => "/tmp/cljtmpfile1555885885588503551"])
+```
+
 
 ### Development
 
