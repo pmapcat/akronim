@@ -79,6 +79,28 @@
          (list ["(test-defns-simple-sum 2 3)" "=>" "5"]
                ["(test-defns-simple-sum 3 3)" "=>" "6"]
                ["(test-defns-simple-sum 0 0)" "=>" "0"]))))
+  (testing "should have examples, but not test. Because of `:no-test?` metadata key. But `:doc` shold be inplace"
+    (is (=  (:akronim/example (meta #'test-helpers/no-test-fn))
+            (list ["(no-test-fn 3 4)" "=>" "7"])))
+    (is (=  (:doc (meta #'test-helpers/no-test-fn))
+            "Should have an example, but no `:test` implementation"))
+    (is (=  (:test (meta #'test-helpers/no-test-fn)) nil)))
+  
+  (testing "shouldn't have examples or test  because it is empty. "
+    (is (=  (:akronim/example (meta #'test-helpers/should-have-no-examples)) nil))
+    (is (=  (:test            (meta #'test-helpers/should-have-no-examples)) nil))
+    (is (=  (:doc            (meta #'test-helpers/should-have-no-examples))
+            "shouldn't have examples or test  because it is empty. ")))
+ 
+  (testing "workage of different meta declarations"
+    (let [meta-sym (meta #'test-helpers/different-meta-declarations)]
+      (is (=  (:akronim/example meta-sym)
+              (list ["(different-meta-declarations 3 3)" "=>" "9"])))
+      (is (=  (:doc meta-sym) "Some text"))
+      (is (=  (:echo meta-sym) true))
+      (is (=  (:whatever meta-sym) "works"))))
+  
+  
   
   (testing "Test testing function"
     (is (thrown? AssertionError

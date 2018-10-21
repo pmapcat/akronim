@@ -122,8 +122,14 @@ Default is **nothing**
 
 #### Gotchas
 
-* Right now, `akronim` requires docstring to be present in the generated function. 
 * There are tools that assume function declaration form to be `defn` not `defns`. 
+
+### FAQ
+
+#### I want to use Cider debug over a function
+
+Take out the internals of the function. Use `defns` as an interface for the outside
+usage. Make private function that does the heavy lifting. 
 
 ### Development
 

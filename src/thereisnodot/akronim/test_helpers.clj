@@ -10,6 +10,26 @@
     thereisnodot.akronim.test-helpers
   (:require [thereisnodot.akronim.core :refer [defns]]))
 
+(defns no-test-fn
+  "Should have an example, but no `:test` implementation"
+  {:no-test? true}
+  [(no-test-fn 3 4) => 7]
+  ([a b]
+   (+ a b)))
+
+(defns should-have-no-examples
+  "shouldn't have examples or test  because it is empty. "
+  [] [] 3)
+
+(defns
+  ^{:whatever "works"}
+  different-meta-declarations
+  "Some text"
+  {:echo true}
+  [(different-meta-declarations 3 3) => 9]
+  [a b]
+  (* a b))
+
 (defns variadic-fn
   "Takes several arguments as parameters"
   [(variadic-fn 1 1) => 2
