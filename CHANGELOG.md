@@ -1,9 +1,10 @@
 # Change Log
 
 ## [Unreleased]
+
+## [0.1.2]   2018-10-21
 ### Added
 - formatting for :akronim/example metadata field
-
 
 ### Changed
 - ~~There are tools that assume function declaration form to be `defn` not `defns`~~ 

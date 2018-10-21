@@ -1,4 +1,4 @@
-(defproject thereisnodot/akronim "0.1.2-SNAPSHOT"
+(defproject thereisnodot/akronim "0.1.2"
   :description "Doctest like functionality for Clojure programming language"
   :url "https://github.com/michaelleachim/akronim"
   :license {:name "Eclipse Public License"
