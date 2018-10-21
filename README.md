@@ -9,7 +9,7 @@ Library for doctest like functionality for Clojure programming language
 ## Usage
 
 The akronim package provides `defns` macro 
-to make testing and inplace documentation easier
+to make testing and inplace documentation easier. 
 
 ### Getting started
 
@@ -66,9 +66,14 @@ Here is how to use it in conjunction with testing pipeline.
 
 ### Altering docstring
 
+The `:akronim/example` metadata field is formatted with the help of  [zprint](https://github.com/kkinnear/zprint) library. 
+By default, it is set to be **80** characters long. 
+
 To alter docstring of a function at the time of declaration 
 set the following config option either as: `.lein-env` or `.boot-env` or environment
-variables or Java system properties
+variables or Java system properties. 
+
+
 
 Set `akronim_docstring` parameter as:
 * **nothing** will not alter docstring on declaration
@@ -77,6 +82,7 @@ Set `akronim_docstring` parameter as:
 * **hljs** will wrap the declaration into HTML code for https://highlightjs.org and append examples at the end of the docstring
 
 Default is **nothing**
+
 
 ```clojure
 
