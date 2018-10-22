@@ -2,7 +2,8 @@
 
 Library for doctest like functionality for Clojure programming language
 
-[![CircleCI](https://circleci.com/gh/Michaelleachim/akronim.svg?style=svg)](https://circleci.com/gh/Michaelleachim/akronim)
+[![CircleCI](https://circleci.com/gh/MichaelLeachim/akronim.svg?style=svg&circle-token=24d07c948681a700a9b64b6341de07357d0658b4)](https://circleci.com/gh/MichaelLeachim/akronim)
+
 
 ## Installation
 
