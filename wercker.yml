@@ -1,8 +1,4 @@
-box: wercker/default
-# services:
-#   - wercker/postgresql
-#   - wercker/rabbitmq
-#   - wercker/redis
+box: debian
 build:
   steps:
     - script:
