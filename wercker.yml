@@ -2,7 +2,11 @@
 # Docker Hub https://registry.hub.docker.com/_/debian/
 # Read more about containers on our dev center
 # https://devcenter.wercker.com/overview-and-core-concepts/containers/
-box: debian
+box:
+  id: openjdk
+  ports:
+    - "8080"
+    
 # You can also use services such as databases. Read more on our dev center:
 # https://devcenter.wercker.com/administration/services/
 
@@ -17,8 +21,6 @@ build:
     - script:
         name: install clojure
         code: |
-          sudo apt-get update
-          sudo apt-get install openjdk-7-jdk curl -y
           sudo wget -O /usr/local/bin/lein https://raw.github.com/technomancy/leiningen/stable/bin/lein
           sudo chmod +x /usr/local/bin/lein
     - script:
