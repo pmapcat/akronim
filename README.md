@@ -1,10 +1,12 @@
 # akronim
 
 Library for doctest like functionality for Clojure programming language
+[![CircleCI](https://circleci.com/gh/Michaelleachim/akronim.svg?style=svg)](https://circleci.com/gh/Michaelleachim/akronim)
 
 ## Installation
 
 [![Clojars Project](https://clojars.org/thereisnodot/akronim/latest-version.svg)](https://clojars.org/thereisnodot/akronim) 
+
 
 ## Usage
 
